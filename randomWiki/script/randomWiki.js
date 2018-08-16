@@ -4,7 +4,7 @@ $(document).ready(function() {
     setTimeout(()=>{
         $(".box").css("opacity",1);
 
-    },1000);
+    },500);
 
 
     $("#search").on('click',function() {
@@ -23,6 +23,7 @@ $(document).ready(function() {
     $("#delete").on('click',function() {
         $("input").val("");
         removeAnimate();
+
         $(".display").html("");
     });
 
