@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>random wisdom</title>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <style>
+        body {
+            background-color: #FB6964;
+            color: #FB6964;
+            font-family: "Microsoft YaHei";
+            transition: all 0.8s;
+        }
+
+        .wisdom-box {
+            cursor:pointer;
+            /*position: absolute;*/
+            /*top: 50%;*/
+            /*left: 50%;*/
+            /*transform: translate(-50%, -50%);*/
+            /*margin-left : -300px;*/
+            /*margin-top : -175px;*/
+            background-color: #dfdddd;
+            border-color: #fff;
+            border: 18px solid #30312f;
+            border-radius: 28px;
+            width: 600px;
+            height: 350px;
+            margin: 0 auto;
+            margin-top:50px;
+            /*box-shadow: 3px 3px 25px #fff, -3px -3px 25px #fff;*/
+            /*flex实现垂直居中*/
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .middle {
+            width: 50px;
+            height: 164px;
+            margin: 0 auto;
+            background: #333333;
+            opacity:0.99;
+        }
+        .bottom {
+            width: 360px;
+            height: 85px;
+            background: #333333;
+            margin: -35px auto;
+            border-radius: 100%;
+            opacity:0.95;
+            box-shadow: 6px 6px 6px rgba(86, 86, 86, 0.6);
+        }
+        .wisdom-content {
+            cursor:pointer;
+            transition: all 0.8s;
+        }
+
+        .wisdom-text {
+            font-size: 35px;
+            font-weight: bold;
+
+            width: 500px;
+
+
+        }
+
+        .wisdom-author {
+            float: right;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+<div class="wisdom-box">
+    <div class="wisdom-content">
+        <div class="wisdom-text">
+            <i class="fa fa-quote-left"></i>
+            <span id="content">十步杀一人，千里不留行。事了拂衣去，深藏身与名。</span>
+        </div>
+        <span id="author" class="wisdom-author">--唐·李白《侠客行》</span>
+    </div>
+</div>
+<div class="middle"></div>
+<div class="bottom"></div>
+<script src="https://cdn.wilddog.com/sdk/js/2.5.8/wilddog.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        //$("body").addClass("animated zoomInDown")
+        //wilddog
+        var config = {
+            syncURL: "https://wd3315540768cplmnp.wilddogio.com"
+        };
+        wilddog.initializeApp(config);
+        var ref = wilddog.sync().ref();
+        var postsRef = ref.child("random_wisdom");
+        var index;
+        var content;
+        var colors = ['#16a085', 'rgb(114, 215, 156)', 'rgb(128, 175, 223)', '#f39c12', 'rgb(241, 183, 181)',  "#BDBB99", "#77B1A9", "#73A857"];
+        var color;
+        color = Math.floor(Math.random() * colors.length);
+
+        $("body").css({
+            color: colors[color],
+            backgroundColor: colors[color]
+        });
+        //click
+        $(".wisdom-box").on('click', function () {
+            //animate
+            $(".wisdom-content").css("transform", "scale(0)");
+            //color
+            color = Math.floor(Math.random() * colors.length);
+            $("body").css({
+                color: colors[color],
+                backgroundColor: colors[color]
+            });
+            //text
+            setTimeout(function () {
+                $(".wisdom-content").css("transform", "scale(1)");
+                index = Math.floor(Math.random() * content.length);
+                $("#content").html(content[index].wisdom);
+                $("#author").html("--" + content[index].author);
+            }, 800);
+        });
+
+
+        //事件监听
+        wilddog.sync().ref('random_wisdom/-Kx6F2zyM2KPwqNb8CU4').on("value", function (snapshot) {
+            content = snapshot.val();
+
+        });
+
+    });
+
+</script>
+</body>
+</html>
