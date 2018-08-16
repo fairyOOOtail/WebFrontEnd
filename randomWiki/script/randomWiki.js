@@ -65,6 +65,7 @@ $(document).ready(function() {
         var ref = data[3];
         if(data[1].length) {
             display(search,title,content,ref,data[1].length);
+	    loadingEnd();
             animate();
 
         }
@@ -104,7 +105,6 @@ $(document).ready(function() {
         //$(".test").html();
     }
     function animate() {
-        loadingEnd();
         $(".display").css("opacity",1);
     }
     function removeAnimate(){
