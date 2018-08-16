@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>弹幕</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+
+    <style>
+        html {
+            margin : 0;
+            padding : 0;
+        }
+
+        #txt , #me{
+            font-weight : 1000;
+        }
+
+        .s_text{
+            width: 300px;
+            height: 45px;
+            border-radius: 6%;
+            border: 2px solid gray;
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        button {
+            width : 100px;
+            margin-top: 20px;
+            height: 35px;
+        }
+
+        .dm {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .dm .dm_screen {
+            height:350px;
+            background-color : rgb(196,207,201);
+            border-radius : 10px;
+            border : 6px solid rgb(0,150,200);
+        }
+
+        .dm .dm_screen .dm_show div{
+            font-size: 20px;
+            line-height:30px;
+            font-weight: 600;
+            color: #fff;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="dm">
+        <h1 class="title text-center text-primary " id="me">在线弹幕聊天</h1>
+        <div class="dm_screen">
+            <div class="dm_show"></div>
+        </div>
+        <div class="send">
+            <input type="text" placeholder="大脑在颤抖" class="s_text " id="txt" />
+            <br>
+            <button class="s_sub btn btn-info" ><i class="fa fa-send fa-1x" ></i>发送</button>
+            <button class="s_del btn  btn-danger" ><i class="fa fa-trash fa-1x"></i>暴力清屏</button>
+            <button class="s_del_normal btn  btn-info" ><i class="fa fa-trash fa-1x"></i>清屏</button>
+            <br><br><br><hr><footer class="text-primary">Written by Handsome Qiang</footer>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.wilddog.com/sdk/js/2.5.8/wilddog-sync.js"></script>
+<script src="https://cdn.wilddog.com/js/vendor/jquery-1.11.2.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
