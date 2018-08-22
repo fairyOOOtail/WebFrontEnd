@@ -3,76 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <title>弹幕</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>-->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />-->
 
     <style>
         html {
-            margin : 0;
-            padding : 0;
+            margin: 0;
+            padding: 0;
         }
 
-        #txt , #me{
-            font-weight : 1000;
+
+
+        /*
+        @PC
+         */
+        @media screen and (max-width: 2000px) {
+            .main {
+                width: 920px;
+                margin:  0 auto;
+            }
+
+            .dm_screen {
+                width: 644px;
+            / / 70 %
+            }
+
+            .dm_history {
+                width: 276px;
+            }
+
+            .dm_screen, .dm_history {
+                height: 420px;
+            }
+
+            .send_content, .send_time, .send_floor {
+                font-size: 13px;
+            }
+
         }
 
-        .s_text{
-            width: 300px;
+        .dm {
+            display: flex;
+            /*justify水平对齐*/
+            justify-content: center;
+            /*align-items 垂直对齐*/
+            align-items: center;
+        }
+
+        /*
+        @history css
+         */
+        .dm .dm_history {
+            border: 1px solid #000;
+
+        }
+
+        .history_list li {
+            list-style: none;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .dm_history .history_list {
+            text-align: left;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: scroll;
+
+        }
+
+        .dm_history .history_list .send_content {
+            float: left;
+
+            width: 45%;
+        }
+
+        .dm_history .history_list .send_floor {
+            float: left;
+            width: 20%;
+        }
+
+        .dm_history .history_list .send_time {
+            float: left;
+            width: 35%;
+        }
+
+        #txt, #me {
+            font-weight: 1000;
+        }
+
+        .dm_history .s_text {
+            width: 100%;
             height: 45px;
-            border-radius: 6%;
-            border: 2px solid gray;
             text-align: center;
-            margin-top: 35px;
         }
 
         button {
-            width : 100px;
+            width: 100px;
             margin-top: 20px;
             height: 35px;
         }
 
-        .dm {
-            margin-top: 20px;
-            text-align: center;
-        }
-
+        /*
+        screen css
+         */
         .dm .dm_screen {
-            height:350px;
-            background-color : rgb(196,207,201);
-            border-radius : 10px;
-            border : 6px solid rgb(0,150,200);
+            border-top: 1px solid #000;
+            border-left: 1px solid #000;
+            background-color: rgb(196, 207, 201);
         }
 
-        .dm .dm_screen .dm_show div{
+        .dm .dm_screen .dm_show {
+            width: 100%;
+            height: 100%;
+        }
+
+        .dm_screen .dm_screen_bottom {
+            width: 100%;
+            overflow-y: hidden;
+            overflow-x: scroll;
+        }
+        .dm_screen_bottom .img_list {
+            width: max-content;
+
+        }
+        .dm .dm_screen .dm_show div {
             font-size: 20px;
-            line-height:30px;
+            line-height: 30px;
             font-weight: 600;
             color: #000;
             position: absolute;
             left: 0;
             top: 0;
         }
+        .dm_screen_bottom li {
+            list-style:none;
+            float:left;
+            max-width: 150px;
+            height: 100px;
+            /*
+            此处实现放大效果
+             */
+            overflow: hidden;
+        }
+        .dm_screen_bottom img {
+            float:left;
+            width: 100%;
+            height: 100%;
+            transition: all 0.6s;
+            overflow:hidden;
+        }
+
+        .dm_screen_bottom img:hover,.dm_screen_bottom img:focus {
+            transform: scale(1.5);
+            cursor: pointer;
+
+        }
 
         .dm_message {
-            width : 100px;
-            overflow : hidden;
+            width: 100px;
+            overflow: hidden;
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <div class="dm">
-        <h1 class="title text-center text-primary " id="me">在线弹幕聊天</h1>
-        <div class="dm_screen">
-            <div class="dm_show"></div>
+
+    <h1 class="title text-center text-primary " id="me">在线弹幕聊天</h1>
+    <div id="app">
+        <div class="main">
+            <div class="dm">
+                <div class="dm_screen">
+                    <div class="dm_show"></div>
+                        <div class="dm_screen_bottom">
+                            <div class="img_list">
+                                <li><img src="img/bao.jpg"/></li>
+                                <li><img src="img/beach.jpg"/></li>
+                                <li><img src="img/bike.jpg"/></li>
+                                <li><img src="img/cat.jpg"/></li>
+                                <li><img src="img/city.jpg"/></li>
+                                <li><img src="img/colors.jpg"/></li>
+                                <li><img src="img/deer.jpg"/></li>
+                                <li><img src="img/horse.jpg"/></li>
+                                <li><img src="img/ka.jpg"/></li>
+                                <li><img src="img/lake.jpg"/></li>
+                                <li><img src="img/lu.jpg"/></li>
+                                <li><img src="img/tiger.png"/></li>
+                            </div>
+                        </div>
+                </div>
+                <div class="dm_history">
+                    <div class="history_list">
+                        <div class="send_floor">
+                            <p>ID</p>
+                        </div>
+                        <div class="send_content">
+                            <p>弹幕内容</p>
+                        </div>
+                        <div class="send_time">
+                            <p>发送时间</p>
+                        </div>
+                    </div>
+                    <div class="btn_group">
+                        <input type="text" placeholder="大脑在颤抖" class="s_text " id="txt"/>
+                        <button class="s_sub"><i class="fa fa-send fa-1x"></i>发送</button>
+
+                        <button class="s_del_normal"><i class="fa fa-trash fa-1x"></i>清屏</button>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="send">
-            <input type="text" placeholder="大脑在颤抖" class="s_text " id="txt" />
-            <br>
-            <button class="s_sub btn btn-info" ><i class="fa fa-send fa-1x" ></i>发送</button>
-            <button class="s_del btn  btn-danger" ><i class="fa fa-trash fa-1x"></i>暴力清屏</button>
-            <button class="s_del_normal btn  btn-info" ><i class="fa fa-trash fa-1x"></i>清屏</button>
-            <br><br><br><hr><footer class="text-primary">Written by Handsome Qiang</footer>
+            <!--<button class="s_del"><i class="fa fa-trash fa-1x"></i>暴力清屏</button>-->
+
+            <br><br><br>
+            <hr>
+            <footer class="text-primary">Written by Handsome Qiang</footer>
         </div>
     </div>
 </div>
