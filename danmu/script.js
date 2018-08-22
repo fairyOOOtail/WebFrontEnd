@@ -60,6 +60,10 @@ $(document).ready(function () {
     // setInterval(() => {
     // },3000);
 
+    //show picture
+    $(".dm_screen_bottom .img_list img").click(function() {
+       showPic($(this));
+    });
     $(".s_sub").click(function () {
         text = $(".s_text").val();
         temp_len = arr.length;
@@ -69,7 +73,8 @@ $(document).ready(function () {
         postRef.push(text);
         tempRef.push({
             content: text,
-            time: getTime()
+            time: getTime(),
+            date: new Date().toLocaleDateString()
         });
 
 
@@ -110,14 +115,14 @@ $(document).ready(function () {
             arr.push(newDm);
 
             // 即时显示
-            if(ifInput) {
+            if (ifInput) {
                 setTimeout(() => {
                     index = arr.length - 1;
                     newInput = arr[index].content;
                     showDanmu(newInput);
                 }, 500);
             }
-            showHistory(newDm.content,newDm.time);
+            showHistory(newDm.content, newDm.time,newDm.date);
             //console.log(newDm);
 
 
@@ -130,16 +135,15 @@ $(document).ready(function () {
         });
 
     //获取匹配元素在当前视口的相对偏移
-    var topMin = $('.dm_screen').offset().top;
-    var topMax = topMin + $('.dm_screen').height();
+    var topMin = $('.dm_show').offset().top;
+    var topMax = (topMin + $('.dm_show').height()) / 2;
     var _top = topMin;
-    var width = $('.dm_screen').offset().left + $('.dm_screen').width();
+    var width = $('.dm_show').offset().left + $('.dm_show').width();
 
     //动画效果
-    var moveObj = function (obj) {
+    function moveObj(obj) {
 
-        var _width = width + obj.width();
-        _top = _top + 50;
+        var _width = width;
         if (_top > topMax) {
             _top = topMin;
         }
@@ -147,12 +151,13 @@ $(document).ready(function () {
             left: _width,
             top: _top
         });
-        var time = 20000;
+        _top = _top + 40;
+        var time = 15000;
         //obj.addClass("animated rollIn");
 
         obj.animate({
             //move left
-            left: "-200px"
+            left: $('.dm_show').offset().left - obj.width()
         }, time, function () {
             obj.remove();
             //obj.addClass("animated rollOut");
@@ -166,40 +171,43 @@ $(document).ready(function () {
     };
     //display.push(arr_content);
     //多线程显示
-    var showRun = function (index) {
-        //$("#pic").addClass('animated infinite pulse');
-        for (var i = index; i < arr.length; i++) {
-            currentArr.push(arr[i]);
-            showDanmu(arr[i], i);
-        }
-        console.log(currentArr);
-        //setTimeout(showRun, 3000);
-    };
+    // var showRun = function (index) {
+    //     //$("#pic").addClass('animated infinite pulse');
+    //     for (var i = index; i < arr.length; i++) {
+    //         currentArr.push(arr[i]);
+    //         showDanmu(arr[i], i);
+    //     }
+    //     console.log(currentArr);
+    //     //setTimeout(showRun, 3000);
+    // };
 
-    var showDanmu = function (content) {
-        var runObj = $("<div class=\'dm_message\'>" + content + "</div>");
+    function showDanmu(content) {
+        var runObj = $("<p class=\'dm_message\'>" + content + "</p>");
         $(".dm_show").append(runObj);
         moveObj(runObj);
 
     }
 
-    var showHistory = function (content,time) {
-        var _content = "<li title=\""+content+"\">"+content+"</li>";
+    function showHistory (content, time,date) {
+        var _content = "<li title=\"" + content + "\">" + content + "</li>";
         var _floor = "<li>" + "匿名" + "</li>";
-        var _time = "<li>" +  time + "</li>";
+        var _time = "<li title='" + date + "'>" + time + "</li>";
         $(".send_floor").append(_floor);
         $(".send_content").append(_content);
         $(".send_time").append(_time);
     }
-    var currentInput = function () {
-        arr = [];
-    }
-    var getTime = function() {
+    function getTime() {
         var date = new Date();
-        var hour = date.getHours() < 10 ? "0"+date.getHours() : date.getHours();
-        var minute = date.getMinutes() < 10 ? "0"+date.getMinutes() : date.getMinutes();
-        var second = date.getSeconds() < 10 ? "0"+date.getSeconds() : date.getSeconds();
+        var hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+        var minute = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+        var second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
         return hour + ":" + minute + ":" + second;
+    }
+    function showPic(img) {
+        var src = img.attr('src');
+        $(".bg").css("background","url("+src+")");
+        $(".bg").css("background-size","cover");
+
     }
     jQuery.fx.interval = 50; //动画帧数
 

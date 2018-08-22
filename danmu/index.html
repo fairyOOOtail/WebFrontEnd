@@ -23,7 +23,7 @@
                 margin:  0 auto;
             }
 
-            .dm_screen {
+            .dm_screen,.bg {
                 width: 644px;
             / / 70 %
             }
@@ -32,7 +32,7 @@
                 width: 276px;
             }
 
-            .dm_screen, .dm_history {
+            .dm_show, .history_list,.bg {
                 height: 420px;
             }
 
@@ -54,10 +54,12 @@
         @history css
          */
         .dm .dm_history {
-            border: 1px solid #000;
-
+            border-top: 1px solid #000;
+            border-right: 1px solid #000;
+            border-bottom: 1px solid #000;
+            overflow: hidden;
+            z-index: 2;
         }
-
         .history_list li {
             list-style: none;
             white-space: nowrap;
@@ -68,12 +70,13 @@
         .dm_history .history_list {
             text-align: left;
             width: 100%;
-            height: 100%;
             overflow-x: hidden;
             overflow-y: scroll;
-
         }
-
+        .history_list p {
+            font-size: 13px;
+            font-weight: bold;
+        }
         .dm_history .history_list .send_content {
             float: left;
 
@@ -82,61 +85,84 @@
 
         .dm_history .history_list .send_floor {
             float: left;
+            text-align: center;
             width: 20%;
         }
 
         .dm_history .history_list .send_time {
             float: left;
-            width: 35%;
+            width: 28%;
+            margin-left: 10px;
         }
 
-        #txt, #me {
-            font-weight: 1000;
+        .dm_history .btn_group {
+            height: 116.8px;
+            border-top: 1px solid #000;
         }
+
+
 
         .dm_history .s_text {
             width: 100%;
+            border: 0;
+            border-bottom: 1px solid #000;
             height: 45px;
             text-align: center;
         }
 
-        button {
-            width: 100px;
-            margin-top: 20px;
+        .s_sub,.s_del_normal {
+            width: 100%;
+            border: 0;
             height: 35px;
+        }
+
+        .s_sub {
+            border-bottom: 1px solid #000;
         }
 
         /*
         screen css
          */
         .dm .dm_screen {
-            border-top: 1px solid #000;
-            border-left: 1px solid #000;
-            background-color: rgb(196, 207, 201);
+            /*border-top: 1px solid #000;*/
+            /*border-left: 1px solid #000;*/
+            /*border-right: 1px solid #000;*/
+            overflow: hidden;
+            border : 1px solid #000;
         }
 
         .dm .dm_screen .dm_show {
             width: 100%;
-            height: 100%;
+            z-index: 2;
+            background: #000000;
         }
-
+        .dm_show .bg {
+            /*transition: all 0.8s;*/
+            position: absolute;
+            z-index: 1;
+        }
         .dm_screen .dm_screen_bottom {
             width: 100%;
             overflow-y: hidden;
             overflow-x: scroll;
+            /*border-left: 1px solid #000;*/
+            /*border-right: 1px solid #000;*/
+            /*!* bug *!*/
+            /*margin-left: -1px;*/
         }
         .dm_screen_bottom .img_list {
             width: max-content;
 
         }
-        .dm .dm_screen .dm_show div {
+        /* danmu */
+        .dm .dm_screen .dm_show p {
+            margin: 0;
             font-size: 20px;
-            line-height: 30px;
             font-weight: 600;
-            color: #000;
+            color: #fff;
+            opacity: 0.9;
             position: absolute;
-            left: 0;
-            top: 0;
+            z-index: 1;
         }
         .dm_screen_bottom li {
             list-style:none;
@@ -163,8 +189,6 @@
         }
 
         .dm_message {
-            width: 100px;
-            overflow: hidden;
         }
     </style>
 </head>
@@ -176,7 +200,10 @@
         <div class="main">
             <div class="dm">
                 <div class="dm_screen">
-                    <div class="dm_show"></div>
+
+                    <div class="dm_show">
+                        <div class="bg"></div>
+                    </div>
                         <div class="dm_screen_bottom">
                             <div class="img_list">
                                 <li><img src="img/bao.jpg"/></li>
@@ -215,13 +242,13 @@
                 </div>
             </div>
         </div>
-        <div class="send">
-            <!--<button class="s_del"><i class="fa fa-trash fa-1x"></i>暴力清屏</button>-->
+        <!--<div class="send">-->
+            <!--&lt;!&ndash;<button class="s_del"><i class="fa fa-trash fa-1x"></i>暴力清屏</button>&ndash;&gt;-->
 
-            <br><br><br>
-            <hr>
-            <footer class="text-primary">Written by Handsome Qiang</footer>
-        </div>
+            <!--<br><br><br>-->
+            <!--<hr>-->
+            <!--<footer class="text-primary">Written by Handsome Qiang</footer>-->
+        <!--</div>-->
     </div>
 </div>
 <script src="https://cdn.wilddog.com/sdk/js/2.5.8/wilddog-sync.js"></script>
