@@ -63,12 +63,14 @@ $(document).ready(function () {
     $(".s_sub").click(function () {
         text = $(".s_text").val();
         temp_len = arr.length;
-
         ifInput = true;
         var postRef = ref.child("history");
         var tempRef = ref.child("current_message");
         postRef.push(text);
-        tempRef.push(text);
+        tempRef.push({
+            content: text,
+            time: getTime()
+        });
 
 
         $(".s_text").val('');
@@ -107,13 +109,16 @@ $(document).ready(function () {
             newDm = snapshot.val();
             arr.push(newDm);
 
+            // 即时显示
             if(ifInput) {
                 setTimeout(() => {
                     index = arr.length - 1;
-                    newInput = arr[index];
+                    newInput = arr[index].content;
                     showDanmu(newInput);
                 }, 500);
             }
+            showHistory(newDm.content,newDm.time);
+            //console.log(newDm);
 
 
             //display.push(arr_content);
@@ -172,27 +177,41 @@ $(document).ready(function () {
     };
 
     var showDanmu = function (content) {
-        var runObj = $("<div class=\'dm_message\'>[" + arr.lastIndexOf(content) + "楼]  " + content + "</div>");
+        var runObj = $("<div class=\'dm_message\'>" + content + "</div>");
         $(".dm_show").append(runObj);
         moveObj(runObj);
 
     }
 
+    var showHistory = function (content,time) {
+        var _content = "<li title=\""+content+"\">"+content+"</li>";
+        var _floor = "<li>" + "匿名" + "</li>";
+        var _time = "<li>" +  time + "</li>";
+        $(".send_floor").append(_floor);
+        $(".send_content").append(_content);
+        $(".send_time").append(_time);
+    }
     var currentInput = function () {
         arr = [];
     }
-
-    jQuery.fx.interval = 50; //动画帧数
-    console.log("aaa" + arr.length);
-
-    setInterval(() => {
+    var getTime = function() {
         var date = new Date();
-        //五分钟清除一次当前聊天数据
-        if (date.getMinutes() % 5 === 0 && date.getSeconds() === 0) {
-            //清除current_message节点
-            wilddog.sync().ref('current_message').remove();
-            arr = [];
-        }
-    }, 100);
+        var hour = date.getHours() < 10 ? "0"+date.getHours() : date.getHours();
+        var minute = date.getMinutes() < 10 ? "0"+date.getMinutes() : date.getMinutes();
+        var second = date.getSeconds() < 10 ? "0"+date.getSeconds() : date.getSeconds();
+        return hour + ":" + minute + ":" + second;
+    }
+    jQuery.fx.interval = 50; //动画帧数
+
+    // setInterval(() => {
+    //     var date = new Date();
+    //     //10分钟清除一次当前聊天数据
+    //     if (date.getMinutes() % 10 === 0 && date.getSeconds() === 0) {
+    //         //清除current_message节点
+    //         wilddog.sync().ref('current_message').remove();
+    //         arr = [];
+    //     }
+    // }, 100);
     //设置100ms减少误差
+
 });
