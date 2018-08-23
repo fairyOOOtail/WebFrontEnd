@@ -15,6 +15,7 @@
         body {
             background: url("img/bg.jpg");
             background-size: cover;
+            background-repeat: no-repeat;
         }
         .bg-cover {
             top: 0;
@@ -24,9 +25,6 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.66);
             z-index: -1;
-        }
-        .container {
-            opacity: 0.7;
         }
         /*
         @PC
@@ -81,6 +79,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            height: 20px;
         }
 
         .dm_history .history_list {
@@ -92,6 +91,10 @@
         .history_list p {
             font-size: 13px;
             font-weight: bold;
+            margin: 0;
+            height: 30px;
+            line-height: 20px;
+            padding-top: 5px;
         }
         .dm_history .history_list .send_content {
             float: left;
@@ -114,6 +117,7 @@
         .dm_history .btn_group {
             height: 120px;
             border-top: 1px solid #777;
+            opacity: 0.66;
         }
 
 
@@ -153,16 +157,20 @@
         .dm .dm_screen .dm_show {
             width: 100%;
             z-index: 2;
-            background: #000000;
+            background: #2424247a;
             /*make overflow:hidden effective*/
             position: relative;
             /*make dm_message(absolute) hidden*/
             overflow: hidden;
         }
         .dm_show .bg {
-            /*transition: all 0.8s;*/
+            transition: all .66s ease-out;
             position: absolute;
             z-index: 1;
+        }
+        .dm_show .bg:hover,.dm_show .bg:focus{
+            cursor: pointer;
+            transform: scale(1.2);
         }
         .dm_screen .dm_screen_bottom {
             width: 100%;
@@ -190,7 +198,7 @@
             list-style:none;
             float:left;
             width: 165px;
-            height: 116px;
+            height: 120px;
             /*
             此处实现放大效果
              */
@@ -200,12 +208,15 @@
             float:left;
             width: 100%;
             height: 100%;
-            transition: all 0.6s;
+            /*尺寸不一致导致动画随机性*/
+            transition: all 0.66s linear;
             overflow:hidden;
+            opacity: 0.66;
         }
 
         .dm_screen_bottom img:hover,.dm_screen_bottom img:focus {
             transform: scale(1.5);
+            opacity: 1;
             cursor: pointer;
 
         }
@@ -223,6 +234,7 @@
                 <div class="dm_screen">
                     <div class="dm_show">
                         <div class="bg"></div>
+                        <div class="dm_message"></div>
                     </div>
                         <div class="dm_screen_bottom">
                             <div class="img_list">
@@ -244,10 +256,10 @@
                 <div class="dm_history">
                     <div class="history_list">
                         <div class="send_floor">
-                            <p>ID</p>
+                            <p>用户</p>
                         </div>
                         <div class="send_content">
-                            <p>弹幕内容</p>
+                            <p>历史弹幕</p>
                         </div>
                         <div class="send_time">
                             <p>发送时间</p>
