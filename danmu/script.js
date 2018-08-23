@@ -141,6 +141,10 @@ $(document).ready(function () {
             // input.replace(/</g,"lt").replace(/>/g,"gt");
             return false;
         }
+	//length
+        if(input.length > 23) {
+            return false;
+        }
         return true;
     }
 
