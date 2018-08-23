@@ -3,24 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>弹幕</title>
-    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>-->
-    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />-->
-
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script src="https://cdn.wilddog.com/sdk/js/2.5.8/wilddog-sync.js"></script>
+    <script src="https://cdn.wilddog.com/js/vendor/jquery-1.11.2.min.js"></script>
     <style>
         html {
             margin: 0;
             padding: 0;
         }
 
-
-
+        body {
+            background: url("img/bg.jpg");
+            background-size: cover;
+        }
+        .bg-cover {
+            top: 0;
+            left: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.66);
+            z-index: -1;
+        }
+        .container {
+            opacity: 0.7;
+        }
         /*
         @PC
          */
         @media screen and (max-width: 2000px) {
             .main {
                 width: 920px;
-                margin:  0 auto;
+                margin:  100px auto;
             }
 
             .dm_screen,.bg {
@@ -54,11 +68,13 @@
         @history css
          */
         .dm .dm_history {
-            border-top: 1px solid #000;
-            border-right: 1px solid #000;
-            border-bottom: 1px solid #000;
+            border-top: 1px solid #777;
+            border-right: 1px solid #777;
+            border-bottom: 1px solid #777;
             overflow: hidden;
             z-index: 2;
+            background: #96969659;
+            color: #fff;
         }
         .history_list li {
             list-style: none;
@@ -96,8 +112,8 @@
         }
 
         .dm_history .btn_group {
-            height: 116.8px;
-            border-top: 1px solid #000;
+            height: 120px;
+            border-top: 1px solid #777;
         }
 
 
@@ -105,36 +121,43 @@
         .dm_history .s_text {
             width: 100%;
             border: 0;
-            border-bottom: 1px solid #000;
-            height: 45px;
-            text-align: center;
+            border-bottom: 1px solid #777;
+            height: 39%;
         }
 
         .s_sub,.s_del_normal {
             width: 100%;
             border: 0;
-            height: 35px;
+            height: 30%;
+            letter-spacing: 2px;
+            color: #fff;
+            font-weight: bold;
         }
 
         .s_sub {
-            border-bottom: 1px solid #000;
+            border-bottom: 1px solid #777;
+            background: #84e3ff;
+        }
+        .s_del_normal {
+            background: #ff6050;
         }
 
         /*
         screen css
          */
         .dm .dm_screen {
-            /*border-top: 1px solid #000;*/
-            /*border-left: 1px solid #000;*/
-            /*border-right: 1px solid #000;*/
             overflow: hidden;
-            border : 1px solid #000;
+            border : 1px solid #777;
         }
 
         .dm .dm_screen .dm_show {
             width: 100%;
             z-index: 2;
             background: #000000;
+            /*make overflow:hidden effective*/
+            position: relative;
+            /*make dm_message(absolute) hidden*/
+            overflow: hidden;
         }
         .dm_show .bg {
             /*transition: all 0.8s;*/
@@ -143,12 +166,10 @@
         }
         .dm_screen .dm_screen_bottom {
             width: 100%;
+            height: 120px;
             overflow-y: hidden;
             overflow-x: scroll;
-            /*border-left: 1px solid #000;*/
-            /*border-right: 1px solid #000;*/
-            /*!* bug *!*/
-            /*margin-left: -1px;*/
+            border-top: 1px solid #777;
         }
         .dm_screen_bottom .img_list {
             width: max-content;
@@ -163,12 +184,13 @@
             opacity: 0.9;
             position: absolute;
             z-index: 1;
+            width: fit-content;
         }
         .dm_screen_bottom li {
             list-style:none;
             float:left;
-            max-width: 150px;
-            height: 100px;
+            width: 165px;
+            height: 116px;
             /*
             此处实现放大效果
              */
@@ -193,14 +215,12 @@
     </style>
 </head>
 <body>
+<div class="bg-cover"></div>
 <div class="container">
-
-    <h1 class="title text-center text-primary " id="me">在线弹幕聊天</h1>
     <div id="app">
         <div class="main">
             <div class="dm">
                 <div class="dm_screen">
-
                     <div class="dm_show">
                         <div class="bg"></div>
                     </div>
@@ -234,7 +254,7 @@
                         </div>
                     </div>
                     <div class="btn_group">
-                        <input type="text" placeholder="大脑在颤抖" class="s_text " id="txt"/>
+                        <input type="text" placeholder="请输入弹幕内容......" class="s_text " id="txt"/>
                         <button class="s_sub"><i class="fa fa-send fa-1x"></i>发送</button>
 
                         <button class="s_del_normal"><i class="fa fa-trash fa-1x"></i>清屏</button>
@@ -242,17 +262,8 @@
                 </div>
             </div>
         </div>
-        <!--<div class="send">-->
-            <!--&lt;!&ndash;<button class="s_del"><i class="fa fa-trash fa-1x"></i>暴力清屏</button>&ndash;&gt;-->
-<!--test-->
-            <!--<br><br><br>-->
-            <!--<hr>-->
-            <!--<footer class="text-primary">Written by Handsome Qiang</footer>-->
-        <!--</div>-->
     </div>
 </div>
-<script src="https://cdn.wilddog.com/sdk/js/2.5.8/wilddog-sync.js"></script>
-<script src="https://cdn.wilddog.com/js/vendor/jquery-1.11.2.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

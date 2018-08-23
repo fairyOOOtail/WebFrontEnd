@@ -1,11 +1,4 @@
 $(document).ready(function () {
-    //特效
-    $("#me").addClass('animated rollIn');
-    //$(".dm_screen").addClass("animated infinite pulse");
-    $(".s_text").addClass('animated infinite rubberBand');
-    $(".s_sub").addClass('animated infinite pulse');
-    $(".s_del").addClass('animated infinite pulse');
-    $(".s_del_normal").addClass('animated infinite pulse');
 
     //创建Sync实例
     var config = {
@@ -70,16 +63,18 @@ $(document).ready(function () {
         ifInput = true;
         var postRef = ref.child("history");
         var tempRef = ref.child("current_message");
-        postRef.push(text);
-        tempRef.push({
-            content: text,
-            time: getTime(),
-            date: new Date().toLocaleDateString()
-        });
+        if(filter(text)){
+            postRef.push(text);
+            tempRef.push({
+                content: text,
+                time: getTime(),
+                date: new Date().toLocaleDateString()
+            });
 
 
-        $(".s_text").val('');
-        //$("#pic").addClass("animated bounce");
+            $(".s_text").val('');
+        }
+
     });
 
     //清空数组和屏幕
@@ -92,10 +87,8 @@ $(document).ready(function () {
     $(".s_del").click(function () {
         arr = [];
         $(".dm_show").empty();
-        $(".dm").addClass('animated hinge');
         afterDel = $("<h1 class=\" text-center text-primary \" id=\"me\">暴力不？<br></h1>");
         $("#qiang").append(afterDel);
-        $("#qiang").addClass("animated zoomInLeft");
     });
 
     //响应键盘事件
@@ -113,7 +106,6 @@ $(document).ready(function () {
         function (snapshot) {
             newDm = snapshot.val();
             arr.push(newDm);
-
             // 即时显示
             if (ifInput) {
                 setTimeout(() => {
@@ -135,44 +127,38 @@ $(document).ready(function () {
         });
 
     //获取匹配元素在当前视口的相对偏移
-    var topMin = $('.dm_show').offset().top;
-    var topMax = (topMin + $('.dm_show').height()) / 2;
+    var topMin = 0;
+    var topMax = $('.dm_show').height() / 2;
     var _top = topMin;
-    var width = $('.dm_show').offset().left + $('.dm_show').width();
-
     //动画效果
     function moveObj(obj) {
 
-        var _width = width;
+
         if (_top > topMax) {
             _top = topMin;
         }
+
         obj.css({
-            left: _width,
+            left: $('.dm_show').width() ,
             top: _top
         });
         _top = _top + 40;
-        var time = 15000;
-        //obj.addClass("animated rollIn");
+        var time = 10000;
 
         obj.animate({
             //move left
-            left: $('.dm_show').offset().left - obj.width()
+            left: -obj.width()
         }, time, function () {
             obj.remove();
-            //obj.addClass("animated rollOut");
             //obj.remove();
-            //$(".d_m").addClass("animated hinge");
         });
         //obj.remove();
-        //$(".d_m").addClass("animated zoomOutLeft");
 
 
     };
     //display.push(arr_content);
     //多线程显示
     // var showRun = function (index) {
-    //     //$("#pic").addClass('animated infinite pulse');
     //     for (var i = index; i < arr.length; i++) {
     //         currentArr.push(arr[i]);
     //         showDanmu(arr[i], i);
@@ -209,7 +195,21 @@ $(document).ready(function () {
         $(".bg").css("background-size","cover");
 
     }
-    jQuery.fx.interval = 50; //动画帧数
+    function filter(input) {
+        //null
+        if(input === "") {
+            return false;
+        }
+        // var script = /<.*>.*<\/.*>/g;
+        // var p1 = /<\w*/g;
+        if(input.match(/</g) || input.match(/>/g)){
+            // input.replace(/</g,"lt").replace(/>/g,"gt");
+            return false;
+        }
+        //xss
+        return true;
+    }
+    jQuery.fx.interval = 15; //动画帧数
 
     // setInterval(() => {
     //     var date = new Date();
@@ -221,5 +221,4 @@ $(document).ready(function () {
     //     }
     // }, 100);
     //设置100ms减少误差
-	//test
 });
