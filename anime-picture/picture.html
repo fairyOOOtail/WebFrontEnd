@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Picture</title>
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body onselectstart="return false;">
+
+    <div class="wrap" id="wrap">
+        <!-- photo 负责平移与旋转-->
+        <div class="photo photo-front" id="photo-{{index}}" onclick="turnPage(this)">
+            <!-- photo_wrap 负责翻转 -->
+            <div class="photo-wrap">
+                <div class="side side-front">
+                    <p class="image"><img src="photo/{{img}}" /></p>
+                    <p class="date">{{date}}</p>
+                </div>
+                <div class="side side-back">
+                    <p class="title">{{title}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="photo/data.js"></script>
+    <script type="text/javascript" src="controller.js"></script>
+</body>
+</html>

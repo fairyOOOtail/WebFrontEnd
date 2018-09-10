@@ -1,0 +1,190 @@
+* {
+    padding : 0;
+    margin : 0;
+}
+
+
+body {
+    background-color : #fff;
+    color : #333;
+    font-family : 'Avenir Next', 'Lantinghei SC';
+    font-size : 14px;
+    -webkit-font-smoothing : antialiased;
+}
+
+.wrap {
+    width : 100%;
+    height : 100%;
+    position : absolute;
+    overflow : hidden;
+    -webkit-perspective: 200px; /*其子元素获得3D透视*/
+    background :url(banner.jpg);
+    background-repeat : no-repeat;
+    background-size : cover;
+    background-attachment : fixed;
+    background-position : center;
+}
+
+.photo {
+    width : 250px;
+    height : 320px;
+    position : absolute;
+    z-index : 1;
+    box-shadow : 6px 6px 5px rgba(255,255,255,.3),-6px -6px 5px rgba(255,255,255,.3);
+    transition : all 0.5s;
+}
+
+.photo .side {
+    width : 100%;
+    height : 100%;
+    background-color : #e9edee;
+    position : absolute;
+    top : 0;
+    right : 0;
+    padding : 15px;
+    box-sizing : border-box;
+}
+
+
+.photo .side-front .image {
+    width : 100%;
+    heigth : 100%;
+    /*line-height : 200px;*/
+    overflow : hidden;
+}
+
+.photo .side-front .image img {
+    width : 100%;
+    height : 250px;
+    border-radius : 3px;
+    transition: all 0.6s;
+}
+
+.photo .side-front .image img:hover {
+    transform: scale(1.2);
+}
+
+.photo .side-front .date {
+    text-align : center;
+    font-size : 16px;
+    line-height : 50px;
+}
+
+.photo .side-back .title {
+    color : #666;
+    line-height : 270px;
+    font-weight : bold;
+    text-align : center;
+}
+
+
+
+.photo-center {
+    /*
+    top : 0;
+    bottom : 0;
+    right : 0;
+    left : 0;
+    margin : auto;
+    */
+    left : 50%;
+    top : 50%;
+    /*
+    margin-top : -160px;
+    margin-left : -125px;
+    */
+    transform : translate(-50%,-50%);   /*垂直居中*/
+    z-index : 999;
+    perspective : 500px;
+}
+
+/*3D翻转*/
+.photo-wrap {
+    position : absolute;
+    width : 100%;
+    height : 100%;
+    transform-style : preserve-3d;  /*子元素处于3D空间*/
+    transition : all .6s;
+}
+
+.photo-wrap .side-front {
+    transform : rotateY(0deg);
+
+}
+
+.photo-wrap .side-back {
+    transform : rotateY(180deg);
+
+}
+
+/*调整正面角度及3D透视*/
+.photo-center .photo-wrap .side-front {
+    transform : rotateY(0deg);
+
+}
+
+.photo-center .photo-wrap .side-back {
+    transform : rotateY(180deg);
+    opacity : 0.8;
+}
+
+.photo-wrap .side {
+    backface-visibility: hidden;
+}
+
+.photo-front .photo-wrap {
+    transform : rotateY(0deg);
+}
+
+.photo-back .photo-wrap {
+    transform : rotateY(180deg);
+}
+
+/*控制按钮*/
+.nav {
+    width : 100%;
+    height : 40px;
+    line-height : 40px;
+    position : absolute;
+    bottom : 3%;
+    z-index : 999;
+    text-align : center;
+
+}
+
+/*普通按钮*/
+.nav .btn {
+    width : 30px;
+    height : 30px;
+    display : inline-block;
+    cursor : pointer;
+    background-color : #bbb;
+    text-align : center;
+    border-radius : 50%;
+    margin-left : 15px;
+    transform : scale(.5);
+    transition : all .5s;
+}
+
+/*选中按钮*/
+.nav .btn-current{
+    transform : scale(1);
+    background-color: rgb(250,255,255);
+}
+
+/*@
+样式优化
+ */
+.photo {
+    left : 50%;
+    top : 50%;
+}
+
+
+.photo-front .photo-wrap {
+    transform : rotateY(0deg);
+}
+
+.photo-back .photo-wrap {
+    transform : rotateY(180deg);
+}
