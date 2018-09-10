@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>今日天气</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
+    <link rel="stylesheet" href="https:////cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color : #8ef;
+            color : #000;
+            font-family : "Microsoft YaHei";
+        }
+
+        .title {
+            padding-top : 50px;
+            color:#FB6964;
+            font-weight: bold;
+            font-size : 50px;
+        }
+        .cityName {
+            width: 388px;
+            height: 50px;
+            border-radius: 6%;
+            border: 2px solid;
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom:20px;
+        }
+
+        .query {
+            width : 100px;
+        }
+
+        .content {
+            margin-top : 100px;
+            color:#fff;
+        }
+
+        .author{
+            color:#fff;
+        }
+
+        .display {
+            text-align : center;
+        }
+    </style>
+</head>
+
+<body background="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517824298798&di=4224c1ac9a0a240d6d54a61ee0a4c708&imgtype=0&src=http%3A%2F%2Fimg8.zol.com.cn%2Fbbs%2Fupload%2F24315%2F24314955.jpg">
+<div class="title text-center">今日天气</div>
+<div class="buttons">
+    <input type="text" class="cityName center-block" placeholder="输入您要查询的城市名字"/>
+    <button class="query btn btn-default btn-info center-block"><i class="fa fa-gg">查询</i></button>
+</div>
+<div class="content">
+    <div class="display">
+        <span id="city"></span>
+        <span id="data_y"></span>
+        <span id="weather"></span>
+        <span id="temperature"></span>
+        <span id="temp"></span>
+        <span id="wind"></span>
+        <span id="dressing_advice"></span>
+        <span id="future"></span>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $(".title").addClass("animated rollIn");
+        var temp,temperature,weather,city,dressing_advice,wind,week,data_y;
+        getData("%E6%B1%9F%E9%97%A8");
+
+        $(".query").on('click',function() {
+            $(".display").html();
+            var city = $(".cityName").val();
+            var city = encodeURI(city);
+            $(".test").html(city);
+            //alert("defeat");
+            getData(city);
+        });
+
+        $(".cityName").keypress(function(event) {
+            if (event.keyCode == "13"){
+                $(".query").trigger('click');
+            }
+        });
+
+        function getData(city) {
+            $.ajax({
+                url:"https://v.juhe.cn/weather/index?cityname="+city+"&dtype=&format=&key=4abe2c33b7c1807ac7682448da088f1e",
+                dataType:"jsonp",
+                data:{},
+                type:'GET',
+                success:function(data){
+                            if(data.result == null) {
+                                alert(data.reason);
+                            }
+                            else {
+                                var data = data.result;
+                                addData(data);
+                            }
+                            //alert(JSON.stringify(data));
+                },
+                error:function(errorThorwn){
+                    //alert(JSON.stringify(errorThorwn));
+                    alert("抱歉,没有该城市天气资料");
+                }
+            });
+        }
+
+        // temp,temperature,weather,city,dressing_advice,wind,week,data_y
+        function addData(data) {
+            city = "<h3>城市 ： " + data.today.city + "</h3>";
+            data_y = "<h3>日期 : " + data.today.date_y + " " + data.today.week + "</h3>";
+            weather = "<h3>天气 : " + data.today.weather + "</h3>";
+            temperature = "<h3>今日温度 : " + data.today.temperature + "</h3>";
+            temp = "<h3>当前温度 : " + data.sk.temp + "</h3>";
+            wind = "<h3>风力 : " + data.today.wind + "</h3>";
+            dressing_advice = "<h3>穿衣建议 : " + data.today.dressing_advice + "</h3>";
+            $("#city").html(city);
+            $("#data_y").html(data_y);
+            $("#weather").html(weather);
+            $("#temperature").html(temperature);
+            $("#temp").html(temp);
+            $("#wind").html(wind);
+            $("#dressing_advice").html(dressing_advice);
+            //$("#future").html("<h3>未来六天天气 : " + (data.future)[1].weather + "</h3>");
+            getIn();
+
+        }
+        var getIn = function() {
+            $(".display").addClass("animated rollIn");
+            setTimeout(function(){$(".display").removeClass("animated rollIn");},1000);
+        }
+
+    });
+</script>
+</body>
+</html>

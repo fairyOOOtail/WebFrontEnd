@@ -1,0 +1,129 @@
+* {
+    margin : 0;
+    padding : 0;
+}
+
+.my_body {
+    background-color: #333;
+    width : 100%;
+}
+
+.kyrie{
+    position : absolute;
+    color : #fff;
+    font-family : Lobster;
+    font-size : 50px;
+    margin : 2px auto auto 5px;
+}
+
+#nav {
+    background-color : #8cc;
+    padding-bottom : 8px;
+}
+
+.nav li {
+    float : right;
+    font-family : Lobster;
+    font-size : 2em;
+}
+
+#nav_inside {
+    background-color : #8cc;
+}
+
+
+.title{
+    color : #fff;
+    font-family : Lobster;
+    font-size : 50px;
+    padding-top : 100px;
+    padding-bottom : 35px;
+}
+#delu {
+    max-width:150px;
+    border-color : #888;
+    border-width : 2px;
+    border-style : solid;
+}
+#me {
+    margin-top: 2%;
+    text-align: center;
+    font-size : 20px;
+    font-weight: bold;
+}
+
+.top_section {
+    margin : 0 auto;
+    background-color : #A8C;
+}
+
+.portfolio {
+    margin : 0px auto;
+    background-color : #9BE;
+    display: inline-block;
+    width: 100%;
+}
+
+.portfolio_title {
+    color : #fff;
+    font-family : Lobster;
+    font-size : 50px;
+    padding-top : 7%;
+}
+
+#tips {
+    padding-top : 30px;
+    font-size : 15px;
+    font-weight: 700;
+}
+
+#pic {
+    padding-top : 50px;
+}
+
+.contact {
+    margin : 0px auto;
+    background-color : #8a8;
+    display: inline-block;
+    width: 100%;
+}
+
+.contact_title{
+    color : #fff;
+    font-family : Lobster;
+    font-size : 50px;
+    padding:7%;
+}
+
+#email {
+    margin-top : 50px;
+    color : #222;
+}
+
+#cl {
+    margin-left : 0 auto;
+}
+
+#yao {
+    margin-top : 50px;
+    margin-bottom : 50px;
+    max-width:200px;
+}
+
+.end_world {
+    color : #fff;
+    font-family : Lobster;
+    font-size : 50px;
+}
+
+.end {
+    background-color : #852;
+    padding-bottom:10px;
+    margin : 0 auto;
+    display: inline-block;
+    width: 100%;
+}
+
+#other_web a {
+    color : #fff;
+}

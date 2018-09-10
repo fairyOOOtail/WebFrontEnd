@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>番茄时钟</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="style.css" />
+    <script src="jQuery.min.js"></script>
+</head>
+<body>
+<div>
+    <div class="title">番茄时钟</div>
+    <br>
+    <div class="clock">
+        <div class="content-left">
+            <div class = "btn-left">
+                <div><p>工作/min</p></div>
+                <button type = "button" class = "btn" id = "workIncrease">+</button>
+                <p class = "content-time"><span id = "workTime">25</span></p>
+                <button type = "button" class = "btn" id = "workDecrease">-</button>
+            </div>
+        </div>
+        <div class="content-center">
+            <div class = "screen">
+                <div class="time">25:00</div>
+                <div class = "status">工作</div>
+            </div>
+            <div class="func-btn">
+                <button type = "button" class = "func" id = "start">开始</button>
+                <button type = "button" class = "func" id = "stop">停止</button>
+                <button type = "button" class = "func" id = "reset">重置</button>
+            </div>
+        </div>
+        <div class="content-right">
+            <div class = "btn-right">
+                <div><p>休息/min</p></div>
+                <button type = "button" class = "btn" id = "breakIncrease">+</button>
+                <p class = "content-time"><span id = "breakTime">5</span></p>
+                <button type = "button" class = "btn" id = "breakDecrease">-</button>
+            </div>
+        </div>
+    </div>
+    <br>
+    <p class = "tomato">连续获得番茄数：<span class = "number">0</span></p>
+    <script src="script.js"></script>
+
+
+</body>
+</html>

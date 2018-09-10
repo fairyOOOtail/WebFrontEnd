@@ -1,0 +1,129 @@
+.title {
+    font-size : 50px;
+    font-weight : bold;
+    color : #ef9;
+    text-align : center;
+}
+
+button {
+    outline: none;
+}
+
+body {
+    font-family : "SimHei";
+    color : #fff;
+    background-color : #484;
+}
+
+.introduce {
+    font-size : 25px;
+}
+
+.clock {
+    margin :50px auto;
+    height : 350px;
+    width : 700px;
+    background-color : rgb(57,57,67);
+    border-radius : 30px;
+    border : 18px rgb(182,164,51) solid;
+}
+
+.content-left {
+    float : left;
+    width : 100px;
+}
+
+.content-center {
+    margin :auto;
+    width : 400px;
+    height : 200px;
+}
+
+.status {
+    text-align : center;
+    font-size : 40px;
+}
+
+.screen {
+    margin-top : 60px;
+    text-align : center;
+    width : 400px;
+    height : 180px;
+    background-color : rgb(196,207,201);
+    border-radius : 20px;
+    border : 4px rgb(171,179,164) solid;
+}
+
+.time {
+    font-size : 100px;
+    margin-top : 20px;
+}
+
+.status {
+    font-weight : bold;
+    font-size : 20px;
+}
+
+.content-right {
+    margin-top : -260px;
+    float : right;
+    width : 100px;
+}
+
+.btn-left {
+    margin-left : 30px;
+    text-align : center;
+}
+
+.btn-right {
+    margin-right : 30px;
+    text-align : center;
+}
+
+.btn {
+    cursor : pointer;
+    height : 60px;
+    width : 60px;
+    background-color : rgb(120,185,224);
+    border : 3px rgb(79,77,199) solid;
+    border-radius : 10px;
+    font-size : 30px;
+    margin : auto;
+}
+
+.content-time {
+    font-size : 30px;
+}
+
+.func-btn {
+    margin-top : 20px;
+}
+
+.func {
+    cursor : pointer;
+    font-weight : bold;
+    font-size : 24px;
+    margin-left : 8px;
+    width : 120px;
+    height : 60px;
+    border : 3px rgb(19,87,89) solid;
+    border-radius : 20px;
+}
+
+#start {
+    background-color : #6f9;
+}
+
+#stop {
+    background-color : #f55;
+}
+
+#reset {
+    background-color : #df8;
+}
+
+.tomato {
+    margin: 0 auto;
+    width: fit-content;
+    font-size : 50px;
+}
