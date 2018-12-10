@@ -1,0 +1,112 @@
+.game-board {
+    font-family : fantasy;
+    margin : 50px auto;
+    width : 420px;
+    height : 460px;
+    background-color : rgb(97,77,77);
+    box-shadow : 9px 7px 15px rgb(97,77,77);
+    border-radius : 10px;
+}
+
+p {
+    display : inline;
+}
+
+.player-score {
+    position : absolute;
+    color : #fff;
+    font-size : 1.3em;
+    margin : 10px 30px;
+}
+
+.player2-score {
+    position : relative;
+    left : 129px;
+}
+
+.game-screen {
+    border-radius : 10px;
+    position : relative;
+    width : 360px;
+    height : 360px;
+    top : 50px;
+    margin :0 auto;
+    background : radial-gradient(closest-side,rgb(77,197,121), rgb(77,157,111), rgb(77,127,111));
+}
+
+.game-choice {
+    position : absolute;
+    top : 80px;
+    text-align : center;
+}
+
+.whoFirst {
+    position : absolute;
+    left : 11%;
+    top : 80px;
+}
+.choice-word,.mode-word,.whoFirst-word{
+    font-size : 1.8em;
+    color : #fff;
+}
+
+.one-play,.two-play,.mode1,.mode2,.playerFirst,.computerFirst {
+    position : relative;
+    margin-top : 70px;
+    background-color : transparent;
+    border : none;
+    font-size : 1.5em;
+    color : #fff;
+}
+
+.game-mode {
+    position : absolute;
+    top : 90px;
+    text-align : center;
+    left : 24%;
+}
+
+.round{
+    margin-top : -4px;
+    margin-left : -4px;
+    width : 120px;
+    height : 120px;
+    border : 2px solid rgb(97,77,77);
+    float : left;
+    font-size : 6em;
+    text-align : center;
+    color : #fff;
+}
+
+.reset {
+    color : #fff;
+    position : relative;
+    margin-top : 60px;
+    background-color : transparent;
+    border : none;
+    left : 300px;
+    font-size : 1.5em;
+}
+
+.reset:hover,.one-play:hover,.two-play:hover,.mode1:hover,.mode2:hover,.playerFirst:hover,.computerFirst:hover{
+    cursor : pointer;
+    border : 2px dashed #fff;
+}
+
+.result {
+    position : relative;
+    color : #fff;
+    font-size : 2em;
+    top : 80px;
+    text-align : center;
+}
+
+.player-score,.canvas,.reset {
+    display : none;
+}
+
+.turn {
+    font-size : 30px;
+    font-weight : bold;
+    margin-left : 45%;
+}

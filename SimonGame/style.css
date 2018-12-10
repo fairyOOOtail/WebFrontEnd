@@ -1,0 +1,104 @@
+html{
+    background-image: url('http://cdn.backgroundhost.com/backgrounds/subtlepatterns/retina_wood.png');
+}
+
+.simon-box {
+    position : absolute;
+    margin : 150px auto auto 92px;
+    width : 350px;
+    height : 350px;
+    border-radius : 100%;
+}
+
+#green {
+    position : absolute;
+    background-color : rgb(0,160,0);
+    width : 170px;
+    height : 170px;
+    border-top-left-radius : 100%;
+    border-bottom-right-radius : 50%;
+}
+
+#red {
+    position : absolute;
+    background-color : rgb(160,0,0);
+    width : 170px;
+    height : 170px;
+    margin-left : 180px;
+    border-top-right-radius : 100%;
+    border-bottom-left-radius : 50%;
+}
+
+#yellow {
+    position : absolute;
+    background-color : rgb(160,160,0);
+    width : 170px;
+    height : 170px;
+    margin-top : 180px;
+    border-bottom-left-radius : 100%;
+    border-top-right-radius : 50%;
+}
+
+#blue {
+    position: absolute;
+    background-color : rgb(0,0,160);
+    width : 170px;
+    height : 170px;
+    margin : 180px auto auto 180px;
+    border-bottom-right-radius : 100%;
+    border-top-left-radius : 50%;
+}
+
+.count {
+    position : absolute;
+    font-family : sans-serif;
+    font-size : 3em;
+    font-weight : bold;
+    color : #fff;
+    text-align : center;
+    margin : 60px auto auto 215px;
+    background-color : rgb(196,207,201);
+    width : 100px;
+    border : 2px solid #fff;
+}
+
+.start {
+    margin-left : 116px;
+    position : absolute;
+}
+
+.strict {
+    margin-left : 225px;
+    position : absolute;
+}
+
+.reset {
+    margin-left : 332px;
+    position : absolute;
+}
+
+.play-btn {
+    position : absolute;
+    margin : 143px auto auto 143px;
+    border-radius : 100%;
+}
+
+#green:hover, #red:hover, #yellow:hover, #blue:hover {
+    cursor : pointer;
+}
+
+.green.change{
+    background-color : rgb(0,255,0);
+}
+
+.red.change{
+    background-color : rgb(255,0,0);
+}
+
+.yellow.change{
+    background-color : rgb(255,255,0);
+}
+
+.blue.change{
+    background-color : rgb(0,0,255);
+}

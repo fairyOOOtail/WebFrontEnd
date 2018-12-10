@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简易计算器</title>
+    <style>
+        html {
+            background-color : rgb(223,228,224);
+        }
+
+        h1 {
+            color : #fff;
+            font-family : "SimHei"
+        }
+
+        .calcBox {
+            margin : auto;
+            height : 550px;
+            width : 400px;
+            border-radius : 30px;
+            background-color : rgb(57,57,67);
+            border : 15px rgb(57,57,57) solid;
+            text-align : center;
+            position : absolute;
+            top : 200px;
+            left : 400px;
+        }
+
+        .text {
+            font-size : 30px;
+            text-align : right;
+            width : 300px;
+            height : 50px;
+            background-color : rgb(196,207,201);
+            border-radius : 20px;
+            border : 4px rgb(171,179,164) solid
+        }
+
+        .btn_group {
+            margin :35px auto;
+            width : 300px;
+            height : 400px;
+        }
+
+        .btn {
+            font-size : 20px;
+            cursor : pointer;
+            float : left;
+            width : 75px;
+            height : 70px;
+            background-color : rgb(120,185,224);
+            color : #fff;
+            border-radius : 30px;
+            border : 3px rgb(79,87,89) solid;
+        }
+    </style>
+</head>
+<body>
+<div class = "calcBox">
+    <h1>Simple Calculator</h1>
+    <input type = "text" class = "text" readonly></input>
+    <div class = "btn_group">
+        <button type = "button" id = "AC" class = "btn">AC</button>
+        <button type = "button" id = "CE" class = "btn">CE</button>
+        <button type = "button" id = "%" class = "btn">%</button>
+        <button type = "button" id = "+" class = "btn">+</button>
+        <button type = "button" id = "7" class = "btn">7</button>
+        <button type = "button" id = "8" class = "btn">8</button>
+        <button type = "button" id = "9" class = "btn">9</button>
+        <button type = "button" id = "-" class = "btn">-</button>
+        <button type = "button" id = "4" class = "btn">4</button>
+        <button type = "button" id = "5" class = "btn">5</button>
+        <button type = "button" id = "6" class = "btn">6</button>
+        <button type = "button" id = "*" class = "btn">*</button>
+        <button type = "button" id = "3" class = "btn">3</button>
+        <button type = "button" id = "2" class = "btn">2</button>
+        <button type = "button" id = "1" class = "btn">1</button>
+        <button type = "button" id = "/" class = "btn">/</button>
+        <button type = "button" id = "." class = "btn">.</button>
+        <button type = "button" id = "0" class = "btn">0</button>
+        <button type = "button" id = "." class = "btn">.</button>
+        <button type = "button" id = "=" class = "btn">=</button>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    var content = "0";
+    var result;
+    var operator = true;
+    var point = true;
+
+
+    $(document).ready(function() {
+        $(".text").val(content);
+        $(".btn").click(function() {
+            var val = $(this).attr("id");
+            if(val === "AC") {
+                content = "0";
+                $(".text").val(content);
+                operator = true;
+                point = true;
+            }
+            else if(val === "CE") {
+                content = content.slice(0,-1);
+                $(".text").val(content);
+                operator = true;
+                point = true;
+            }
+            else if(val === "="){
+                result = eval(content);
+                content = result;
+                $(".text").val(result);
+            }
+            else if(parseInt(val,10) == val){
+                content += val;
+                $(".text").val(content);
+                operator = true;
+            }
+            else if(val == ".") {
+                if(point) {
+                    content += val;
+                    $(".text").val(content);
+                    point = false;
+                }
+            }
+            else{
+                if(operator) {
+                    content += val;
+                    $(".text").val(content);
+                    operator = false;
+                }
+                point = true;
+            }
+        });
+
+    });
+</script>
+</body>
+</html>

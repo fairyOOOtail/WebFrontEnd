@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>西蒙小游戏</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="simon-game">
+    <div class = "simon-btn">
+        <div class = "count">0</div>
+        <div class = "start">
+               <button type = "button" class = "btn btn-info start-btn"><i class = "fa fa-plane fa-2x"></i>开始</button>
+        </div>
+        <div class="strict">
+            <button type = "button" class = "btn btn-success"><i class = "fa fa-rocket fa-2x"></i>困难</button>
+        </div>
+        <div class="reset">
+            <button type = "button" class = "btn btn-warning"><i class = "fa fa-refresh fa-2x"></i>重置</button>
+        </div>
+    </div>
+
+    <div class ="simon-box">
+        <div class = "block green" id = "green" value = "0"></div>
+        <div class = "block red" id = "red" value = "1"></div>
+        <div class = "block yellow" id = "yellow" value = "2"></div>
+        <div class = "block blue" id = "blue" value = "3"></div>
+        <button type = "button" class = "btn btn-info play-btn"><i class = "fa fa-music fa-3x"></i></button>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

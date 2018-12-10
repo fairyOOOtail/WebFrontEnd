@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三子棋</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="game-board">
+    <div class="player-score">
+        <p class="player1-score">Player 1(X) : <span id="score1">0</span></p>
+        <p class="player2-score">Player 2(O) : <span id="score2">0</span></p>
+    </div>
+    <div class="game-screen">
+        <div class="game-choice" style="display:nne">
+            <p class="choice-word">How do you want to play?</p>
+            <button type = "button" class="one-play">One Player</button>
+            <button type = "button" class="two-play">Two Player</button>
+        </div>
+        <div class="whoFirst" style="display:none">
+            <p class="whoFirst-word">You can easily beat me</p>
+            <button type = "button" class="playerFirst">You always First</button>
+            <button type = "button" class="computerFirst"></button>
+        </div>
+        <div class="game-mode" style="display:none">
+            <p class="mode-word">Are you ready?</p><br>
+            <button type = "button" class="mode1">YES</button>
+            <button type = "button" class="mode2">NO</button>
+        </div>
+        <div class="result" style="display : none"></div>
+        <div class="canvas">
+            <div class="round" id="r1" value="1"></div>
+            <div class="round" id="r2" value="2"></div>
+            <div class="round" id="r3" value="3"></div>
+            <div class="round" id="r4" value="4"></div>
+            <div class="round" id="r5" value="5"></div>
+            <div class="round" id="r6" value="6"></div>
+            <div class="round" id="r7" value="7"></div>
+            <div class="round" id="r8" value="8"></div>
+            <div class="round" id="r9" value="9"></div>
+        </div>
+    </div>
+    <button type = "button" class="reset">Reset</button>
+</div>
+<div class="turn"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
